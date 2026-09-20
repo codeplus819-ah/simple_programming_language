@@ -16,6 +16,12 @@ std::vector<std::string> tokenize(std::string content){
       }
       continue;
     }
+    if (currentChar == ';') {
+      tokens.push_back(currentToken);
+      tokens.push_back(";");
+      currentToken = "";
+      continue;
+    }
     currentToken.push_back(currentChar);
     if (i == content.length()-1) {
       tokens.push_back(currentToken);
