@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include <fstream>
 
 namespace fs = std::filesystem;
 
@@ -13,7 +14,9 @@ int main(int argc, char* const argv[]) {
       std::cout << "version: 1.0.0\n";
     } else {
       if (fs::exists(command)) {
-        
+        std::ifstream file(command, std::ios::in);
+        std::string content{};
+        std::getline(file, content, '\0');
       } else {
         std::cout << "there is not this file\n";
       }
