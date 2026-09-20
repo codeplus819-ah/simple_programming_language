@@ -10,7 +10,7 @@ std::vector<std::string> tokenize(std::string content){
   for (size_t i = 0; i < content.length(); i++) {
     char currentChar = content[i];
     if (currentChar == ' ' || currentChar == '\n') {
-      if (specialChar == '\"' || specialChar == '\'') {
+      if (specialChar == '\"' || specialChar == '\'' || specialChar == '`') {
         currentToken.push_back(currentChar);
         continue;
       }
@@ -21,14 +21,38 @@ std::vector<std::string> tokenize(std::string content){
       }
       continue;
     }
+
     if (currentChar == ';') {
-      tokens.push_back(currentToken);
+      if (currentToken != "") {
+        tokens.push_back(currentToken);
+        currentToken = "";
+      }
       tokens.push_back(";");
-      currentToken = "";
       continue;
     }
+
+    if (currentChar == '.') {
+      if (currentToken != "") {
+        tokens.push_back(currentToken);
+        currentToken = "";
+      }
+      tokens.push_back(".");
+      continue;
+    }
+
+    if (currentChar == ',') {
+      if (currentToken != "") {
+        tokens.push_back(currentToken);
+        currentToken = "";
+      }
+      tokens.push_back(",");
+      continue;
+    }
+
     if (currentChar == '(' || currentChar == ')' || currentChar == '{' || currentChar == '}') {
-      tokens.push_back(currentToken);
+      if (currentToken != "") {
+        tokens.push_back(currentToken);
+      }
       currentToken = currentChar;
       tokens.push_back(currentToken);
       currentToken = "";
@@ -47,6 +71,12 @@ std::vector<std::string> tokenize(std::string content){
       continue;
     }
 
+    if (currentChar == '`' && specialChar != '`') {
+      specialChar = '`';
+      currentToken.push_back(currentChar);
+      continue;
+    }
+
     if (currentChar == specialChar) {
       specialChar = ' ';
       currentToken.push_back(currentChar);
@@ -56,7 +86,7 @@ std::vector<std::string> tokenize(std::string content){
     }
     
     currentToken.push_back(currentChar);
-    if (i == content.length()-1) {
+    if (i == content.length()-1 && currentToken != "") {
       tokens.push_back(currentToken);
     }
   }
