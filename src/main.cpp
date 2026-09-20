@@ -18,6 +18,7 @@ int main(int argc, char* const argv[]) {
         std::ifstream file(command, std::ios::in);
         std::string content{};
         std::getline(file, content, '\0');
+        tokenize(content);
       } else {
         std::cout << "there is not this file\n";
       }

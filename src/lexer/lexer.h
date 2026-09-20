@@ -3,5 +3,5 @@
 #include <vector>
 #include <string>
 
-std::vector<std::string> tokenize(std::string* content);
+std::vector<std::string> tokenize(std::string content);
 #endif
