@@ -10,7 +10,7 @@ int main(int argc, char* const argv[]) {
     } else if (command == "-v" || command == "-version") {
       std::cout << "version: 1.0.0\n";
     } else {
-      filename = command
+      filename = command;
     }
   } else {
     std::cout << "use this commands:\n-help: for help menu\n-v,--version: for version\n<filename>: run the code\n";
