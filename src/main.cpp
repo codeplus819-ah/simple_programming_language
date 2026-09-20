@@ -5,7 +5,6 @@
 namespace fs = std::filesystem;
 
 int main(int argc, char* const argv[]) {
-  std::string filename {};
   if (argc >= 2) {
     const std::string command = argv[1];
     if (command == "-help") {
@@ -13,8 +12,7 @@ int main(int argc, char* const argv[]) {
     } else if (command == "-v" || command == "-version") {
       std::cout << "version: 1.0.0\n";
     } else {
-      filename = command;
-      if (fs::exists(filename)) {
+      if (fs::exists(command)) {
         
       } else {
         std::cout << "there is not this file\n";
