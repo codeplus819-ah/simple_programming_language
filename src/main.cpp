@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <fstream>
 #include "./lexer/lexer.h"
+#include "./parser/parser.h"
+#include "./syntax/syntax.h"
 
 namespace fs = std::filesystem;
 
@@ -18,7 +20,7 @@ int main(int argc, char* const argv[]) {
         std::ifstream file(command, std::ios::in);
         std::string content{};
         std::getline(file, content, '\0');
-        tokenize(content);
+        std::cout << parse(tokenize(content)).size() << '\n';
       } else {
         std::cout << "there is not this file\n";
       }
