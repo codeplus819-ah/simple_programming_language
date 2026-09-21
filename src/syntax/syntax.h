@@ -3,11 +3,11 @@
 
 #include <string>
 
+template <typename t>
 struct variables_syntax {
   bool can_change;
-  std::string type;
   std::string name;
-  std::string value;
+  t value;
 };
 
 struct if_syntax {
