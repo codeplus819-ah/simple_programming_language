@@ -1,12 +1,13 @@
 #ifndef SYNTAX_H
 #define SYNTAX_H
 
-struct let_syntax {
-  /* data */
-};
+#include <string>
 
-struct const_syntax {
-  /* data */
+struct variables_syntax {
+  bool can_change;
+  std::string type;
+  std::string name;
+  std::string value;
 };
 
 struct if_syntax {
