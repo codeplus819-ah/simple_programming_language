@@ -2,13 +2,20 @@
 
 A simple interpreter for **SPL (Simple Programming Language)**, written in C++.
 
-> ⚠️ This project is still under development. Currently the lexer and parser are ready, and the executor is being built.
+> This project is still under development. Currently the lexer and parser are ready, and the executor is being built.
 
-## 📦 Prerequisites
+## Prerequisites
 
 - A C++ compiler (e.g., `g++` or `clang++`)
 
-## 🔨 Build
+##  Build
 
 ```bash
 g++ "./src/main.cpp" "./src/lexer/lexer.cpp" "./src/parser.cpp" -o spl
+
+```
+
+Copyright (c) 2026 Amir Hosseyn Moeini - Simple Programming Language (SPL)
+
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
